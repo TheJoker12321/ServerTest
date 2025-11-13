@@ -14,8 +14,12 @@ class FenceCipher:
 
     @staticmethod
     def decrypt(text_enc):
-        half_text = text_enc[:len(text_enc) // 2 + 1]
-        half_2_text = text_enc[len(text_enc) // 2 + 1:]
+        if len(text_enc) % 2 != 0:
+            half_text = text_enc[:len(text_enc) // 2 + 2]
+            half_2_text = text_enc[len(text_enc) // 2 + 1:]
+        else:
+            half_text = text_enc[:len(text_enc) // 2 + 1]
+            half_2_text = text_enc[len(text_enc) // 2:]
         new_text = ""
         count_idx = 0
         while len(new_text) != len(text_enc):
@@ -24,12 +28,21 @@ class FenceCipher:
 
             if count_idx == len(half_2_text):
                 new_text += half_text[count_idx]
-
             else:
                 new_text += half_text[count_idx]
                 new_text += half_2_text[count_idx]
                 count_idx += 1
         return new_text
+
+
+
+
+
+
+
+
+
+
 
 
 

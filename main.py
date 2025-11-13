@@ -28,14 +28,15 @@ def extraction_name(name: str):
 @app.post("/caesar")
 def return_caesar_cipher(caesar: Caesar):
     cipher = CaesarCipher()
-    if caesar.mode == "encrypt":
-        return {"encrypted_text": cipher.cipher(caesar.text, caesar.offset, "encrypt")}
-    return {"decrypted_text": cipher.cipher(caesar.text, caesar.offset, "decrypt")}
+    caesar = caesar.__dict__
+    if caesar["mode"] == "encrypt":
+        return {"encrypted_text": cipher.cipher(caesar["text"], caesar["offset"], "encrypt")}
+    return {"decrypted_text": cipher.cipher(caesar["text"], caesar["offset"], "decrypt")}
 
-@app.get("/fence/encrypt/{text}")
+@app.get("/fence/encrypt")
 def encrypt_fence(text: str):
     return {"encrypted_text": FenceCipher().encrypt(text)}
 
-@app.post("/fence/decrypt ")
+@app.post("/fence/decrypt")
 def decrypt_fence(fence: Fence):
     return {"decrypted": FenceCipher().decrypt(fence.text)}
