@@ -38,6 +38,6 @@ class FenceCipher:
 
 
 
-print(FenceCipher.decrypt("rtrsmeunoe"))
+
 
 

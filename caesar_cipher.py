@@ -1,6 +1,6 @@
 class CaesarCipher:
     @staticmethod
-    def encrypt(text, offset: int,status_cipher ):
+    def cipher(text, offset: int,status_cipher ):
         lst_chr = [chr(i) for i in range(97,123)]
         new_text = ""
         for i in text:
@@ -16,6 +16,6 @@ class CaesarCipher:
 
 
 
-print(CaesarCipher.encrypt("mubsecu aetaet", 16, "decrypt"))
+
 
 
